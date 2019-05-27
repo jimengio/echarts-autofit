@@ -1,7 +1,7 @@
 import React, { CSSProperties, ReactNode } from "react";
 import _ from "lodash";
 import { css, cx } from "emotion";
-import echarts, { ECharts } from "echarts";
+import { ECharts } from "echarts";
 import isEqual from "lodash/isEqual";
 
 /** 取整... */
@@ -84,7 +84,8 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   }
 
   async componentDidMount() {
-    // let echarts = (await import(/* webpackChunkName: "echarts" */ "echarts")).default;
+    let echarts = (await import(/* webpackChunkName: "echarts" */ "echarts")).default;
+
     this._chart = echarts.init(this._chartElement, null, { renderer: this.props.renderer });
     this._chart.setOption(this.props.options, this.props.notMergeOption);
 
@@ -107,7 +108,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   }
 
   async componentWillUnmount() {
-    // let echarts = (await import(/* webpackChunkName: "echarts" */ "echarts")).default;
+    let echarts = (await import(/* webpackChunkName: "echarts" */ "echarts")).default;
 
     if (!this.props.resizeDisabled) {
       window.removeEventListener("resize", this.debouncedOnWindowResize);

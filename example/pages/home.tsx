@@ -58,16 +58,9 @@ export default class Home extends React.Component {
       <div>
         Resize window to see how the demo fits the colored area...
         <HashLink to={genRouter.content.name} text={"Child page"} className={styleButton} />
-        <a
-          onClick={async () => {
-            let { showTime } = await import("../util/time" /* webpackChunkName:"time" */);
-            showTime();
-          }}
-        >
-          <div className={styleArea}>
-            <EChartAutofit options={chartOptions} />
-          </div>
-        </a>
+        <div className={styleArea}>
+          <EChartAutofit options={chartOptions} />
+        </div>
       </div>
     );
   }
