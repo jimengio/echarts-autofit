@@ -47,9 +47,11 @@ interface ChartEvents extends CustomizeChartEvent {
 interface IProps {
   className?: string;
   style?: CSSProperties;
-  onReady?: (chart) => void;
+  /** grab chart object */
+  onReady?: (chart: ECharts) => void;
   renderer?: "canvas" | "svg";
   resizeDisabled?: boolean;
+  /** clear canvas on every change if options change */
   forceClear?: boolean;
   options: any;
   notMergeOption?: boolean;

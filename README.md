@@ -25,6 +25,28 @@ let styleArea = css`
 `;
 ```
 
+SVG renderer:
+
+```tsx
+<JMEChart className={height100Percent} options={this.getChartOption()} renderer="svg" />
+```
+
+Bind events:
+
+```tsx
+<JMEChart options={this.options} events={{ click: this.onChartClick }} />
+```
+
+Do something when chart instance is ready:
+
+```tsx
+<JMEChart options={this.getOptions()} onReady={this.onReady} />;
+
+onReady = (chart: ECharts) => {
+  this.chart = chart;
+};
+```
+
 ### Workflow
 
 https://github.com/jimengio/ts-workflow
