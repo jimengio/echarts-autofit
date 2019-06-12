@@ -123,6 +123,11 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   }
 
   componentDidUpdate(prevProps: IProps, prevState: any) {
+    if (this._chart == null) {
+      console.warn("chart is not ready for updating yet!");
+      return;
+    }
+
     const isOptionEqual = isEqual(prevProps.options, this.props.options);
 
     if (!isOptionEqual) {
