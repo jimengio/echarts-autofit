@@ -1,6 +1,6 @@
 {
   "name": "@jimengio/echarts-autofit",
-  "version": "0.1.1-a1",
+  "version": "0.1.1",
   "description": "",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
