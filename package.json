@@ -1,6 +1,6 @@
 {
   "name": "@jimengio/echarts-autofit",
-  "version": "0.1.1",
+  "version": "0.1.2-a1",
   "description": "",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -59,16 +59,17 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1",
+    "echarts": "^4.2.1",
     "webpack-hud": "^0.1.2"
   },
   "peerDependencies": {
+    "echarts": "^4.2.1",
     "@types/echarts": "^4.1.9",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "dependencies": {
-    "echarts": "^4.2.1",
     "emotion": "^10.0.9"
   }
 }
