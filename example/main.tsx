@@ -10,7 +10,7 @@ import Container from "./pages/container";
 const renderApp = () => {
   let routerTree = parseRoutePath(window.location.hash.slice(1), routerRules);
 
-  ReactDOM.render(<Container router={routerTree} />, document.querySelector(".app"));
+  ReactDOM.render(<Container router={routerTree as any} />, document.querySelector(".app"));
 };
 
 window.onload = renderApp;

@@ -1,8 +1,7 @@
 import React, { CSSProperties, ReactNode } from "react";
-import _ from "lodash";
+import { isEqual, debounce, isFunction } from "lodash-es";
 import { css, cx } from "emotion";
 import { ECharts } from "echarts";
-import isEqual from "lodash/isEqual";
 
 /** 取整... */
 export function fixed(value: any, decimals = 3) {
@@ -72,7 +71,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   constructor(props) {
     super(props);
 
-    this.debouncedOnWindowResize = _.debounce(this.onWindowResize, 200);
+    this.debouncedOnWindowResize = debounce(this.onWindowResize, 200);
   }
 
   render() {
@@ -80,7 +79,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
     return (
       <div className={cx(styleContainer, className)} style={style}>
         <div className={cx(styleContainer)} ref={(e) => (this._chartElement = e)} />
-        {_.isFunction(this.props.menuRenderer) ? this.props.menuRenderer() : null}
+        {isFunction(this.props.menuRenderer) ? this.props.menuRenderer() : null}
       </div>
     );
   }
