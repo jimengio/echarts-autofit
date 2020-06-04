@@ -3,12 +3,12 @@ import { css, cx } from "emotion";
 import { genRouter } from "controller/generated-router";
 import { HashLink } from "@jimengio/ruled-router/lib/dom";
 import EChartAutofit from "../../src";
-import { column, expand, row } from "@jimengio/flex-styles";
+import { column, expand, row, Space } from "@jimengio/flex-styles";
 import { JimoButton } from "@jimengio/jimo-basics";
 import { useAtom } from "@jimengio/rex/lib/use-atom";
 
 let PageHome: FC<{ className?: string }> = React.memo((props) => {
-  let stateAtom = useAtom({ occupySpace: false });
+  let stateAtom = useAtom({ occupySpace: false, showDemo: true });
 
   /** Plugins */
   /** Methods */
@@ -69,7 +69,17 @@ let PageHome: FC<{ className?: string }> = React.memo((props) => {
         ECharts Autofit: Resize window to see how the demo fits the colored area...
         <JimoButton
           fillColor
-          text="Toggle"
+          text="Toggle demo"
+          onClick={() => {
+            stateAtom.swapWith((state) => {
+              state.showDemo = !state.showDemo;
+            });
+          }}
+        />
+        <Space width={8} />
+        <JimoButton
+          fillColor
+          text="Toggle space"
           onClick={() => {
             stateAtom.swapWith((state) => {
               state.occupySpace = !state.occupySpace;
@@ -78,12 +88,14 @@ let PageHome: FC<{ className?: string }> = React.memo((props) => {
         />
       </div>
       <div className={column}>{stateAtom.current.occupySpace ? <div style={{ height: 100 }}></div> : null}</div>
-      <div className={cx(expand, row)}>
-        <div className={cx(expand, styleArea)}>
-          <EChartAutofit options={chartOptions} />
+      {stateAtom.current.showDemo ? (
+        <div className={cx(expand, row)}>
+          <div className={cx(expand, styleArea)}>
+            <EChartAutofit options={chartOptions} />
+          </div>
+          <EChartAutofit options={chartOptions} className={cx(expand, styleStandalone)} />
         </div>
-        <EChartAutofit options={chartOptions} className={cx(expand, styleStandalone)} />
-      </div>
+      ) : null}
     </div>
   );
 });

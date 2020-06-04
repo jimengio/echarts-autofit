@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactNode } from "react";
-import { isEqual, debounce, isFunction } from "lodash-es";
+import { isEqual, debounce, isFunction, throttle } from "lodash-es";
 import { css, cx } from "emotion";
 import { ECharts } from "echarts";
 import ResizeObserver from "resize-observer-polyfill";
@@ -73,7 +73,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   constructor(props) {
     super(props);
 
-    this.debouncedOnWindowResize = debounce(this.onWindowResize, 200);
+    this.debouncedOnWindowResize = throttle(this.onWindowResize, 300);
 
     this._resizeObserver = new ResizeObserver((entries) => {
       this.debouncedOnWindowResize();
@@ -83,7 +83,15 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   render() {
     return (
       <div className={cx(styleContainer, this.props.className)} style={this.props.style} data-component="chart-container">
-        <div className={cx(styleContainer)} ref={(e) => (this._chartElement = e)} />
+        <div
+          className={cx(styleContainer)}
+          ref={(element) => {
+            // gets null when unmount
+            if (element != null) {
+              this._chartElement = element;
+            }
+          }}
+        />
         {isFunction(this.props.menuRenderer) ? this.props.menuRenderer() : null}
       </div>
     );
@@ -123,7 +131,13 @@ export default class EChartAutofit extends React.Component<IProps, any> {
 
     this.unbindDataZoomEvent();
 
-    this._chartElement && echarts.dispose(this._chartElement);
+    if (this._chartElement != null) {
+      echarts.dispose(this._chartElement);
+    }
+
+    this._chartElement = null;
+    this._chart = null;
+    this._resizeObserver = null;
   }
 
   componentDidUpdate(prevProps: IProps, prevState: any) {
@@ -220,7 +234,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
 
       if (events) {
         if (events.datazoommouseup) {
-          let zoomDirection;
+          let zoomDirection: EChartZoomDirection;
           const dataZoom = this.getZoomOption();
           const isMove = fixed(dataZoom.end - this._latestZoomRight) === fixed(dataZoom.start - this._latestZoomLeft);
 
