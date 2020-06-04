@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactNode } from "react";
-import { isEqual, debounce, isFunction, throttle } from "lodash-es";
+import { isEqual, debounce, isFunction } from "lodash-es";
 import { css, cx } from "emotion";
 import { ECharts } from "echarts";
 import ResizeObserver from "resize-observer-polyfill";
@@ -73,7 +73,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   constructor(props) {
     super(props);
 
-    this.debouncedOnWindowResize = throttle(this.onWindowResize, 300);
+    this.debouncedOnWindowResize = debounce(this.onWindowResize, 240);
 
     this._resizeObserver = new ResizeObserver((entries) => {
       this.debouncedOnWindowResize();
