@@ -26,12 +26,7 @@ const renderChildPage = (routerTree: IRouteParseResult) => {
 };
 
 export default (props) => {
-  return (
-    <div className={styleContainer}>
-      <div className={styleTitle}>ECharts Autofit</div>
-      {renderChildPage(props.router)}
-    </div>
-  );
+  return <div className={styleContainer}>{renderChildPage(props.router)}</div>;
 };
 
 const styleContainer = css`

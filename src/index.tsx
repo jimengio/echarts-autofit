@@ -2,6 +2,7 @@ import React, { CSSProperties, ReactNode } from "react";
 import { isEqual, debounce, isFunction } from "lodash-es";
 import { css, cx } from "emotion";
 import { ECharts } from "echarts";
+import ResizeObserver from "resize-observer-polyfill";
 
 /** 取整... */
 export function fixed(value: any, decimals = 3) {
@@ -65,6 +66,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
   _latestZoomLeft: number;
   _latestZoomRight: number;
   _isZooming: boolean;
+  _resizeObserver: ResizeObserver;
 
   debouncedOnWindowResize: any;
 
@@ -72,12 +74,15 @@ export default class EChartAutofit extends React.Component<IProps, any> {
     super(props);
 
     this.debouncedOnWindowResize = debounce(this.onWindowResize, 200);
+
+    this._resizeObserver = new ResizeObserver((entries) => {
+      this.debouncedOnWindowResize();
+    });
   }
 
   render() {
-    const { className, style } = this.props;
     return (
-      <div className={cx(styleContainer, className)} style={style}>
+      <div className={cx(styleContainer, this.props.className)} style={this.props.style} data-component="chart-container">
         <div className={cx(styleContainer)} ref={(e) => (this._chartElement = e)} />
         {isFunction(this.props.menuRenderer) ? this.props.menuRenderer() : null}
       </div>
@@ -94,7 +99,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
     // https://github.com/hustcc/echarts-for-react/blob/44c1e27e105236b72aff1bd2a3cc62a83fe3c75d/src/core.jsx#L82
 
     if (!this.props.resizeDisabled) {
-      window.addEventListener("resize", this.debouncedOnWindowResize);
+      this._resizeObserver.observe(this._chartElement);
     }
 
     // NOTICE: this is over-simplified compared with echarts-for-react, need updates probably.
@@ -112,7 +117,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
     let echarts = (await import(/* webpackChunkName: "echarts" */ "echarts")).default;
 
     if (!this.props.resizeDisabled) {
-      window.removeEventListener("resize", this.debouncedOnWindowResize);
+      this._resizeObserver.unobserve(this._chartElement);
       this.debouncedOnWindowResize.cancel();
     }
 
@@ -245,4 +250,7 @@ export default class EChartAutofit extends React.Component<IProps, any> {
 const styleContainer = css`
   width: 100%;
   height: 100%;
+  width: calc(100% - 0.5px);
+  height: calc(100% - 0.5px); /* echarts 获取宽高时似乎会向上取整, 遇到 0.5 的时候会有问题 */
+  overflow: visible;
 `;

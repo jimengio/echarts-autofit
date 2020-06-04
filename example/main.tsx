@@ -7,6 +7,8 @@ import { routerRules } from "./models/router-rules";
 
 import Container from "./pages/container";
 
+import "./main.css";
+
 const renderApp = () => {
   let routerTree = parseRoutePath(window.location.hash.slice(1), routerRules);
 
