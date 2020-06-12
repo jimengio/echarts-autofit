@@ -30,7 +30,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/runtime@^7.7.2":
+"@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.7":
   version "7.10.2"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.10.2.tgz#d103f21f2602497d38348a32e008637d506db839"
   integrity sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
@@ -111,6 +111,26 @@
   version "0.1.1"
   resolved "https://registry.npmjs.org/@jimengio/ci-progress-webpack-plugin/-/ci-progress-webpack-plugin-0.1.1.tgz#3029a2be1df8f0432fc85a8afa926adc004c4f0a"
   integrity sha512-uVf9yrZHFzT6FC+ZKeuv2GjqKoBaB+ceKZDIqqGH9cL/8iWmvXKKB6LXkCOVVEr9nsJaHOEKQfNGUSELgUzXPw==
+
+"@jimengio/flex-styles@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.npm.taobao.org/@jimengio/flex-styles/download/@jimengio/flex-styles-0.1.6.tgz#d37e37aa4a85c72feff386c27b920a5f8c5f6335"
+  integrity sha1-0343qkqFxy/v84bCe5IKX4xfYzU=
+
+"@jimengio/jimo-basics@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.npm.taobao.org/@jimengio/jimo-basics/download/@jimengio/jimo-basics-0.1.4.tgz#a8ef5f7f260ba07e490ceab824a9d7f504c84006"
+  integrity sha1-qO9ffyYLoH5JDOq4JKnX9QTIQAY=
+  dependencies:
+    emotion "^10.0.27"
+    react-transition-group "^4.4.1"
+
+"@jimengio/rex@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.npm.taobao.org/@jimengio/rex/download/@jimengio/rex-0.1.7.tgz#e308fb9f1f81fa6e601a56f69864d06b4c551685"
+  integrity sha1-4wj7nx+B+m5gGlb2mGTQa0xVFoU=
+  dependencies:
+    shallowequal "*"
 
 "@jimengio/router-code-generator@^0.2.7":
   version "0.2.7"
@@ -1337,7 +1357,7 @@ cssesc@^3.0.0:
   resolved "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-csstype@^2.2.0, csstype@^2.5.7:
+csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.7:
   version "2.6.10"
   resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
   integrity sha512-D34BqZU4cIlMCY93rZHbrq9pjTAQJ3U8S8rfBqjwHxkGPThWFjzZDQpgMJY0QViLxth6ZKYiwFBo14RdN44U/w==
@@ -1515,6 +1535,14 @@ dom-converter@^0.2:
   integrity sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
   dependencies:
     utila "~0.4"
+
+dom-helpers@^5.0.1:
+  version "5.1.4"
+  resolved "https://registry.npm.taobao.org/dom-helpers/download/dom-helpers-5.1.4.tgz#4609680ab5c79a45f2531441f1949b79d6587f4b"
+  integrity sha1-RgloCrXHmkXyUxRB8ZSbedZYf0s=
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    csstype "^2.6.7"
 
 dom-serializer@0:
   version "0.2.2"
@@ -3972,6 +4000,16 @@ react-is@^16.8.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-transition-group@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.npm.taobao.org/react-transition-group/download/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
+  integrity sha1-Y4aPkyWjjqXulTXYKDJ/hXczRck=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -4085,6 +4123,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npm.taobao.org/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -4314,6 +4357,11 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+shallowequal@*:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/shallowequal/download/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
+  integrity sha1-GI1SHelbkIdAT9TctosT3wrk5/g=
 
 shebang-command@^1.2.0:
   version "1.2.0"

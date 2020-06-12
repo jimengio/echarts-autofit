@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(0, 0%, 30%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 30%);
+}
