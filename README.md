@@ -11,10 +11,10 @@ Demo http://fe.jimu.io/echarts-autofit/
 Notice, create a container element to define the width/height for the chart!
 
 ```jsx
-import EChartAutofit from "@jimengio/echarts-autofit";
+import EChartsAutofit from "@jimengio/echarts-autofit";
 
 <div className={styleArea}>
-  <EChartAutofit options={chartOptions} />
+  <EChartsAutofit options={chartOptions} />
 </div>;
 
 let styleArea = css`
@@ -28,19 +28,19 @@ let styleArea = css`
 SVG renderer:
 
 ```tsx
-<JMEChart className={height100Percent} options={this.getChartOption()} renderer="svg" />
+<EChartsAutofit className={height100Percent} options={this.getChartOption()} renderer="svg" />
 ```
 
 Bind events:
 
 ```tsx
-<JMEChart options={this.options} events={{ click: this.onChartClick }} />
+<EChartsAutofit options={this.options} events={{ click: this.onChartClick }} />
 ```
 
 Do something when chart instance is ready:
 
 ```tsx
-<JMEChart options={this.getOptions()} onReady={this.onReady} />;
+<EChartsAutofit options={this.getOptions()} onReady={this.onReady} />;
 
 onReady = (chart: ECharts) => {
   this.chart = chart;
