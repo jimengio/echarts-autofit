@@ -45,7 +45,7 @@
     "html-webpack-plugin": "^4.3.0",
     "html-webpack-tags-plugin": "^2.0.17",
     "http-server": "^0.12.3",
-    "immer": "^6.0.9",
+    "immer": "^9.0.6",
     "prettier": "^2.0.5",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
